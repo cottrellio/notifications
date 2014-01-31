@@ -38,7 +38,7 @@ Installation
 		$notification.notify(type, '', '', title, title + ' message.');
 	};
 
-6) Great, finally just add some html in your controller to invoke your newNote method:
+6) Great, finally just add some html in your controller to invoke your newNote() method:
 
 	<div ng-controller="MainCtrl">
 		<button ng-click="newNote('success')">Success!</button>
