@@ -1,0 +1,212 @@
+/* ---------------- Imports ---------------- */
+
+@import 'bourbon';
+@import 'vars';
+
+/* ---------------- Container ---------------- */
+
+.jd-notification-container {
+  position:absolute;
+  z-index:10000;
+}
+
+/* ---------------- Positions ---------------- */
+
+.jd-notification-container.bottom {
+  bottom: 20px;
+}
+
+.jd-notification-container.right {
+  right: 20px;
+}
+
+.jd-notification-container.left {
+  left: 20px;
+}
+
+.jd-notification-container.top {
+  top: 20px;
+}
+
+.jd-notification-container.center {
+  left: 50%;
+  margin-left:-190px;
+}
+
+/* ---------------- Layout ---------------- */
+
+.jd-notification-wrapper {
+    width: $width;
+    position:relative;
+    margin: 10px 0;
+}
+
+.jd-notification {
+    width: $width;
+    background-color: $bg-color;
+    clear:both;
+    min-height: $height;
+    max-height: 90px;
+    color: $text-color;
+    border-top: 3px solid $border-color;
+    overflow:hidden;
+}
+
+.jd-notification-success {
+    width: $width;
+    background-color: $bg-color;
+    clear:both;
+    min-height: $height;
+    max-height: 90px;
+    color: $text-color;
+    border-top: 3px solid $success-color;
+    overflow:hidden;
+}
+.jd-notification-warning {
+    width: $width;
+    background-color: $bg-color;
+    clear:both;
+    min-height: $height;
+    max-height: 90px;
+    color: $text-color;
+    border-top: 3px solid $warning-color;
+    overflow:hidden;
+}
+.jd-notification-error {
+    width: $width;
+    background-color: $bg-color;
+    clear:both;
+    min-height: $height;
+    max-height: 90px;
+    color: $text-color;
+    border-top: 3px solid $error-color;
+    overflow:hidden;
+}
+.jd-notification-info {
+    width: $width;
+    background-color: $bg-color;
+    clear:both;
+    min-height: $height;
+    max-height: 90px;
+    color: $text-color;
+    border-top: 3px solid $info-color;
+    overflow:hidden;
+}
+
+.jd-notification-close-btn {
+    display: inline-block;
+    padding: 3px;
+    font-size: 14px;
+    color: $logo-color;
+    position: absolute;
+    border: 1px solid $bg-color;
+    i {
+        padding: 3px;
+    }
+    right: 3px;
+    top: 5px;
+    @include transition(all, 0.35s, ease-in-out);
+    cursor: pointer;
+    &:hover {
+      color: lighten($logo-color, 10%);
+      border: 1px solid lighten($bg-color, 5%);
+    }
+}
+
+.jd-notification-image {
+    width: $height;
+    height: $height;
+    float:left;
+    display:block;
+    font-size: 40px;
+    color: $title-color;
+    text-align:center;
+    i {
+      display: block;
+      width: 100%;
+      padding-top: 20px;
+    }
+    img {
+      margin:15px;
+      // width: 100%;
+      max-width:70px;
+      min-width:48px;
+    }
+}
+
+/* ---------------- Type Specifics ---------------- */
+
+.jd-notification-image.jd-notification-type-info {
+  color: $info-color;
+}
+
+.jd-notification-image.jd-notification-type-warning {
+  color: $warning-color;
+}
+
+.jd-notification-image.jd-notification-type-error {
+  color: $error-color;
+}
+
+.jd-notification-image.jd-notification-type-success {
+  color: $success-color;
+}
+
+/* ---------------- Formats ---------------- */
+
+.jd-notification-content {
+    padding-left: 100px;
+    padding-right:15px;
+    padding-top:10px;
+}
+
+.jd-notification-title {
+    font-family: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', Arial;
+    color: $title-color;
+    margin: 0px;
+    padding:0px;
+    font-size:20px;
+}
+
+p.jd-notification-text {
+    font-family: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', Arial;
+    margin-top: 0;
+    font-size:12px;
+}
+
+/* ---------------- Animations ---------------- */
+
+.ng-enter,
+.ng-leave,
+.ng-move {
+  -webkit-transition: .35s ease-in-out;
+  -moz-transition: .35s ease-in-out;
+  -o-transition: .35s ease-in-out;
+  transition: .35s ease-in-out;
+  position: relative;
+}
+
+.ng-enter {
+  left: -10px;
+  opacity: 0;
+}
+.ng-enter.ng-enter-active {
+  left: 0;
+  opacity: 1;
+}
+
+.ng-leave {
+  left: 0;
+  opacity: 1;
+}
+.ng-leave.ng-leave-active {
+  left: -10px;
+  opacity: 0;
+}
+
+.ng-move {
+  opacity: 0.5;
+}
+.ng-move.ng-move-active {
+  opacity: 1;
+}

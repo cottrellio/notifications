@@ -1,0 +1,180 @@
+/* ---------------- Imports ---------------- */
+/* ---------------- Base Colors ---------------- */
+/* ---------------- Type Colors ---------------- */
+/* ---------------- Sizes ---------------- */
+/* ---------------- Container ---------------- */
+.jd-notification-container {
+  position: absolute;
+  z-index: 10000; }
+
+/* ---------------- Positions ---------------- */
+.jd-notification-container.bottom {
+  bottom: 20px; }
+
+.jd-notification-container.right {
+  right: 20px; }
+
+.jd-notification-container.left {
+  left: 20px; }
+
+.jd-notification-container.top {
+  top: 20px; }
+
+.jd-notification-container.center {
+  left: 50%;
+  margin-left: -190px; }
+
+/* ---------------- Layout ---------------- */
+.jd-notification-wrapper {
+  width: 380px;
+  position: relative;
+  margin: 10px 0; }
+
+.jd-notification {
+  width: 380px;
+  background-color: #eeeeee;
+  clear: both;
+  min-height: 80px;
+  max-height: 90px;
+  color: #58585b;
+  border-top: 3px solid #58585b;
+  overflow: hidden; }
+
+.jd-notification-success {
+  width: 380px;
+  background-color: #eeeeee;
+  clear: both;
+  min-height: 80px;
+  max-height: 90px;
+  color: #58585b;
+  border-top: 3px solid #6cba16;
+  overflow: hidden; }
+
+.jd-notification-warning {
+  width: 380px;
+  background-color: #eeeeee;
+  clear: both;
+  min-height: 80px;
+  max-height: 90px;
+  color: #58585b;
+  border-top: 3px solid #ffa501;
+  overflow: hidden; }
+
+.jd-notification-error {
+  width: 380px;
+  background-color: #eeeeee;
+  clear: both;
+  min-height: 80px;
+  max-height: 90px;
+  color: #58585b;
+  border-top: 3px solid #d70014;
+  overflow: hidden; }
+
+.jd-notification-info {
+  width: 380px;
+  background-color: #eeeeee;
+  clear: both;
+  min-height: 80px;
+  max-height: 90px;
+  color: #58585b;
+  border-top: 3px solid #2f7dc4;
+  overflow: hidden; }
+
+.jd-notification-close-btn {
+  display: inline-block;
+  padding: 3px;
+  font-size: 14px;
+  color: #58585b;
+  position: absolute;
+  border: 1px solid #eeeeee;
+  right: 3px;
+  top: 5px;
+  -webkit-transition: all, 0.35s, ease-in-out;
+  -moz-transition: all, 0.35s, ease-in-out;
+  transition: all, 0.35s, ease-in-out;
+  cursor: pointer; }
+  .jd-notification-close-btn i {
+    padding: 3px; }
+  .jd-notification-close-btn:hover {
+    color: #717175;
+    border: 1px solid #fbfbfb; }
+
+.jd-notification-image {
+  width: 80px;
+  height: 80px;
+  float: left;
+  display: block;
+  font-size: 40px;
+  color: #58585b;
+  text-align: center; }
+  .jd-notification-image i {
+    display: block;
+    width: 100%;
+    padding-top: 20px; }
+  .jd-notification-image img {
+    margin: 15px;
+    max-width: 70px;
+    min-width: 48px; }
+
+/* ---------------- Type Specifics ---------------- */
+.jd-notification-image.jd-notification-type-info {
+  color: #2f7dc4; }
+
+.jd-notification-image.jd-notification-type-warning {
+  color: #ffa501; }
+
+.jd-notification-image.jd-notification-type-error {
+  color: #d70014; }
+
+.jd-notification-image.jd-notification-type-success {
+  color: #6cba16; }
+
+/* ---------------- Formats ---------------- */
+.jd-notification-content {
+  padding-left: 100px;
+  padding-right: 15px;
+  padding-top: 10px; }
+
+.jd-notification-title {
+  font-family: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', Arial;
+  color: #58585b;
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px; }
+
+p.jd-notification-text {
+  font-family: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', Arial;
+  margin-top: 0;
+  font-size: 12px; }
+
+/* ---------------- Animations ---------------- */
+.ng-enter,
+.ng-leave,
+.ng-move {
+  -webkit-transition: .35s ease-in-out;
+  -moz-transition: .35s ease-in-out;
+  -o-transition: .35s ease-in-out;
+  transition: .35s ease-in-out;
+  position: relative; }
+
+.ng-enter {
+  left: -10px;
+  opacity: 0; }
+
+.ng-enter.ng-enter-active {
+  left: 0;
+  opacity: 1; }
+
+.ng-leave {
+  left: 0;
+  opacity: 1; }
+
+.ng-leave.ng-leave-active {
+  left: -10px;
+  opacity: 0; }
+
+.ng-move {
+  opacity: 0.5; }
+
+.ng-move.ng-move-active {
+  opacity: 1; }

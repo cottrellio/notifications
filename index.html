@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+	<head>
+		<title>ng-Notifications</title>
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/notifications.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+		<script src="http://code.angularjs.org/1.2.10/angular-animate.min.js"></script>
+		<script type="text/javascript" src="js/notifications.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+	</head>
+	<body>
+		<h1>AngularJS Notification Service</h1>
+		<div notifications="bottom right"></div>
+		<div ng-controller="MainCtrl">
+			<button ng-click="newNote('success')">Success!</button>
+			<button ng-click="newNote('warning')">Warning!</button>
+			<button ng-click="newNote('error')">Error!</button>
+			<button ng-click="newNote('info')">Info!</button>
+			<button ng-click="newNote('custom')">Custom!</button>
+		</div>
+
+		<h3>Notification Sample Types</h3>
+		
+		<div class="jd-notification-wrapper">
+			<div class="jd-notification-close-btn" ng-click="removeNotification(notification)">
+				<i class="icon-remove"></i>
+			</div>
+			<div class="jd-notification jd-notification-success">
+				<div class="jd-notification-image jd-notification-type-success" ng-switch on="notification.image">
+					<i class="icon-check"></i>
+				</div>
+				<div class="jd-notification-content jd-notification-content-success">
+					<h3 class="jd-notification-title">Success</h3>
+					<p class="jd-notification-text">Computer Software Developer at Lagoon Amusement Park has been added to your Job Center</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="jd-notification-wrapper">
+			<div class="jd-notification-close-btn" ng-click="removeNotification(notification)">
+				<i class="icon-remove"></i>
+			</div>
+			<div class="jd-notification jd-notification-warning">
+				<div class="jd-notification-image jd-notification-type-warning" ng-switch on="notification.image">
+					<i class="icon-warning-sign"></i>
+				</div>
+				<div class="jd-notification-content jd-notification-content-warning">
+					<h3 class="jd-notification-title">Warning</h3>
+					<p class="jd-notification-text">Computer Software Developer at Lagoon Amusement Park has been added to your Job Center</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="jd-notification-wrapper">
+			<div class="jd-notification-close-btn" ng-click="removeNotification(notification)">
+				<i class="icon-remove"></i>
+			</div>
+			<div class="jd-notification jd-notification-error">
+				<div class="jd-notification-image jd-notification-type-error" ng-switch on="notification.image">
+					<i class="icon-exclamation-sign"></i>
+				</div>
+				<div class="jd-notification-content jd-notification-content-error">
+					<h3 class="jd-notification-title">Error</h3>
+					<p class="jd-notification-text">Computer Software Developer at Lagoon Amusement Park has been added to your Job Center</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="jd-notification-wrapper">
+			<div class="jd-notification-close-btn" ng-click="removeNotification(notification)">
+				<i class="icon-remove"></i>
+			</div>
+			<div class="jd-notification jd-notification-info">
+				<div class="jd-notification-image jd-notification-type-info" ng-switch on="notification.image">
+					<i class="icon-info-sign"></i>
+				</div>
+				<div class="jd-notification-content jd-notification-content-info">
+					<h3 class="jd-notification-title">Info</h3>
+					<p class="jd-notification-text">Computer Software Developer at Lagoon Amusement Park has been added to your Job Center</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="jd-notification-wrapper">
+			<div class="jd-notification-close-btn" ng-click="removeNotification(notification)">
+				<i class="icon-remove"></i>
+			</div>
+			<div class="jd-notification jd-notification-custom">
+				<div class="jd-notification-image jd-notification-type-custom" ng-switch on="notification.image">
+					<i class="icon-bell"></i>
+				</div>
+				<div class="jd-notification-content jd-notification-content-custom">
+					<h3 class="jd-notification-title">Custom</h3>
+					<p class="jd-notification-text">Computer Software Developer at Lagoon Amusement Park has been added to your Job Center</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
