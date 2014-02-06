@@ -5,43 +5,43 @@
 
 /* ---------------- Container ---------------- */
 
-.jd-notification-container {
+.dc-notification-container {
   position:absolute;
   z-index:10000;
 }
 
 /* ---------------- Positions ---------------- */
 
-.jd-notification-container.bottom {
+.dc-notification-container.bottom {
   bottom: 20px;
 }
 
-.jd-notification-container.right {
+.dc-notification-container.right {
   right: 20px;
 }
 
-.jd-notification-container.left {
+.dc-notification-container.left {
   left: 20px;
 }
 
-.jd-notification-container.top {
+.dc-notification-container.top {
   top: 20px;
 }
 
-.jd-notification-container.center {
+.dc-notification-container.center {
   left: 50%;
   margin-left:-190px;
 }
 
 /* ---------------- Layout ---------------- */
 
-.jd-notification-wrapper {
+.dc-notification-wrapper {
     width: $width;
     position:relative;
     margin: 10px 0;
 }
 
-.jd-notification {
+.dc-notification {
     width: $width;
     background-color: $bg-color;
     clear:both;
@@ -52,7 +52,7 @@
     overflow:hidden;
 }
 
-.jd-notification-success {
+.dc-notification-success {
     width: $width;
     background-color: $bg-color;
     clear:both;
@@ -62,7 +62,7 @@
     border-top: 3px solid $success-color;
     overflow:hidden;
 }
-.jd-notification-warning {
+.dc-notification-warning {
     width: $width;
     background-color: $bg-color;
     clear:both;
@@ -72,7 +72,7 @@
     border-top: 3px solid $warning-color;
     overflow:hidden;
 }
-.jd-notification-error {
+.dc-notification-error {
     width: $width;
     background-color: $bg-color;
     clear:both;
@@ -82,7 +82,7 @@
     border-top: 3px solid $error-color;
     overflow:hidden;
 }
-.jd-notification-info {
+.dc-notification-info {
     width: $width;
     background-color: $bg-color;
     clear:both;
@@ -93,7 +93,7 @@
     overflow:hidden;
 }
 
-.jd-notification-close-btn {
+.dc-notification-close-btn {
     display: inline-block;
     padding: 3px;
     font-size: 14px;
@@ -113,7 +113,7 @@
     }
 }
 
-.jd-notification-image {
+.dc-notification-image {
     width: $height;
     height: $height;
     float:left;
@@ -136,31 +136,31 @@
 
 /* ---------------- Type Specifics ---------------- */
 
-.jd-notification-image.jd-notification-type-info {
+.dc-notification-image.dc-notification-type-info {
   color: $info-color;
 }
 
-.jd-notification-image.jd-notification-type-warning {
+.dc-notification-image.dc-notification-type-warning {
   color: $warning-color;
 }
 
-.jd-notification-image.jd-notification-type-error {
+.dc-notification-image.dc-notification-type-error {
   color: $error-color;
 }
 
-.jd-notification-image.jd-notification-type-success {
+.dc-notification-image.dc-notification-type-success {
   color: $success-color;
 }
 
 /* ---------------- Formats ---------------- */
 
-.jd-notification-content {
+.dc-notification-content {
     padding-left: 100px;
     padding-right:15px;
     padding-top:10px;
 }
 
-.jd-notification-title {
+.dc-notification-title {
     font-family: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', Arial;
     color: $title-color;
     margin: 0px;
@@ -168,7 +168,7 @@
     font-size:20px;
 }
 
-p.jd-notification-text {
+p.dc-notification-text {
     font-family: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', Arial;
     margin-top: 0;
     font-size:12px;

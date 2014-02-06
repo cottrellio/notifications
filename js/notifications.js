@@ -113,18 +113,18 @@ angular.module('notifications', []).
         console.log('Notifications directive instantiated.');
 
         var html =
-            '<div class="jd-notification-wrapper" ng-repeat="notification in queue">' +
-                '<div class="jd-notification-close-btn" ng-click="removeNotification(notification)">' +
+            '<div class="dc-notification-wrapper" ng-repeat="notification in queue">' +
+                '<div class="dc-notification-close-btn" ng-click="removeNotification(notification)">' +
                     '<i class="icon-remove"></i>' +
                 '</div>' +
-                '<div class="jd-notification jd-notification-{{ notification.type }}">' +
-                    '<div class="jd-notification-image jd-notification-type-{{ notification.type }}" ng-switch on="notification.image">' +
+                '<div class="dc-notification dc-notification-{{ notification.type }}">' +
+                    '<div class="dc-notification-image dc-notification-type-{{ notification.type }}" ng-switch on="notification.image">' +
                         '<i class="icon-{{ notification.icon }}" ng-switch-when="false"></i>' +
                         '<img ng-src="{{ notification.image }}" ng-switch-default />' +
                     '</div>' +
-                    '<div class="jd-notification-content jd-notification-content-{{ notification.type }}">' +
-                        '<h3 class="jd-notification-title">{{ notification.title }}</h3>' +
-                        '<p class="jd-notification-text">{{ notification.content }}</p>' +
+                    '<div class="dc-notification-content dc-notification-content-{{ notification.type }}">' +
+                        '<h3 class="dc-notification-title">{{ notification.title }}</h3>' +
+                        '<p class="dc-notification-text">{{ notification.content }}</p>' +
                     '</div>' +
                 '</div>' +
             '</div>';
@@ -132,7 +132,7 @@ angular.module('notifications', []).
         function link(scope, element, attrs){
             var position = attrs.notifications;
             position = position.split(' ');
-            element.addClass('jd-notification-container');
+            element.addClass('dc-notification-container');
             for(var i = 0; i < position.length ; i++){
                 element.addClass(position[i]);
             }
