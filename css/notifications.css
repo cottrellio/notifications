@@ -131,7 +131,7 @@
 
 /* ---------------- Formats ---------------- */
 .dc-notification-content {
-  padding-left: 100px;
+  padding-left: 80px;
   padding-right: 15px;
   padding-top: 10px; }
 
@@ -170,7 +170,7 @@ p.dc-notification-text {
   opacity: 1; }
 
 .ng-leave.ng-leave-active {
-  left: -10px;
+  left: 10px;
   opacity: 0; }
 
 .ng-move {

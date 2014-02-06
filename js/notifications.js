@@ -6,9 +6,10 @@
 * Handles notification delivery.
 */
 angular.module('notifications', []).
-    factory('$notification', ['$timeout', function($timeout) {
+    factory('$notification', ['$timeout', '$sce', function($timeout, $sce) {
 
         console.log('Notification service online. :)');
+        console.log('$sce enabled: ' + $sce.isEnabled());
         var notifications = JSON.parse(localStorage.getItem('$notifications')) || [],
             queue = [];
 
@@ -46,25 +47,42 @@ angular.module('notifications', []).
                 Notification Methods
             ------------------------------------------------------------------------------------------------ */
 
-            notify: function(type, image, icon, title, content, userData) {
-                return this.makeNotification(type, image, icon, title, content, userData);
+            notify: function(messageObj) {
+
+                var type = (messageObj.type && messageObj.type !== '') ? messageObj.type : '';
+                var image = (messageObj.image && messageObj.image !== '') ? messageObj.image : false;
+                var icon = (messageObj.icon && messageObj.icon !== '') ? messageObj.icon : settings[type].icon;
+                var title = (messageObj.title && messageObj.title !== '') ? messageObj.title : type.charAt(0).toUpperCase() + type.slice(1);
+                var content = (messageObj.content && messageObj.content !== '') ? messageObj.content : '';
+                var duration = (messageObj.duration && messageObj.duration !== '') ? messageObj.duration : settings[type].duration;
+                var userData = (messageObj.userData && messageObj.userData !== '') ? messageObj.userData : '';
+
+                return this.makeNotification(type, image, icon, title, content, duration, userData);
             },
 
-            makeNotification: function(type, image, icon, title, content, userData) {
-                // Overerite default icon if provided. Else, use default.
-                image = ( image !== '' ) ? image : false;
-                icon = ( icon !== '' ) ? icon : settings[type].icon || settings['defaultIco'];
+            setTimer: function(notification) {
+                var timer = $timeout(function removeFromQueueTimeout() {
+                    queue.splice(queue.indexOf(notification), 1);
+                }, notification.duration);
 
+                return timer;
+            },
+
+            makeNotification: function(type, image, icon, title, content, duration, userData) {
                 // Create notification.
                 var notification = {
-                    'type': type,
-                    'image': image,
-                    'icon': icon,
-                    'title': title,
-                    'content': content,
-                    'timestamp': +new Date(),
-                    'userData': userData
+                    type: type,
+                    image: image,
+                    icon: icon,
+                    title: title,
+                    content: $sce.trustAsHtml(content),
+                    duration: duration,
+                    timestamp: +new Date(),
+                    userData: userData
                 };
+
+                // Set Timer.
+                notification.timeout = this.setTimer(notification);
 
                 // Add to notifications.
                 notifications.push(notification);
@@ -73,9 +91,7 @@ angular.module('notifications', []).
                 queue.push(notification);
 
                 // Timeout and remove from queue.
-                $timeout(function removeFromQueueTimeout(){
-                    queue.splice(queue.indexOf(notification), 1);
-                }, settings[type].duration);
+                notification.timeout;
 
                 // Save to local storage.
                 this.save();
@@ -117,14 +133,14 @@ angular.module('notifications', []).
                 '<div class="dc-notification-close-btn" ng-click="removeNotification(notification)">' +
                     '<i class="icon-remove"></i>' +
                 '</div>' +
-                '<div class="dc-notification dc-notification-{{ notification.type }}">' +
+                '<div class="dc-notification dc-notification-{{ notification.type }}" ng-mouseenter="pauseTimer(notification)" ng-mouseleave="resumeTimer(notification)">' +
                     '<div class="dc-notification-image dc-notification-type-{{ notification.type }}" ng-switch on="notification.image">' +
                         '<i class="icon-{{ notification.icon }}" ng-switch-when="false"></i>' +
                         '<img ng-src="{{ notification.image }}" ng-switch-default />' +
                     '</div>' +
                     '<div class="dc-notification-content dc-notification-content-{{ notification.type }}">' +
                         '<h3 class="dc-notification-title">{{ notification.title }}</h3>' +
-                        '<p class="dc-notification-text">{{ notification.content }}</p>' +
+                        '<p class="dc-notification-text" ng-bind-html="notification.content"></p>' +
                     '</div>' +
                 '</div>' +
             '</div>';
@@ -138,14 +154,30 @@ angular.module('notifications', []).
             }
         }
 
-
         return {
             restrict: 'A',
             scope: {},
             template: html,
             link: link,
-            controller: ['$scope', function NotificationsCtrl( $scope ) {
+            controller: ['$scope', '$timeout', function NotificationsCtrl($scope, $timeout) {
                 $scope.queue = $notification.getQueue();
+
+                $scope.pauseTimer = function(noti) {
+                    if (noti.timeout) {
+                        $timeout.cancel(noti.timeout);
+                        delete noti.timeout;
+                        console.log('Timer paused!');
+                    }
+                }
+
+                $scope.resumeTimer = function(noti) {
+                    if (!noti.timeout) {
+                        noti.timeout = $notification.setTimer(noti);
+                        noti.timeout;
+                        // console.log(noti);
+                        console.log('Resumed Timeout!');
+                    }
+                }
 
                 $scope.removeNotification = function(noti) {
                     $scope.queue.splice($scope.queue.indexOf(noti), 1);

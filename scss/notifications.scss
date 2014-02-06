@@ -6,91 +6,91 @@
 /* ---------------- Container ---------------- */
 
 .dc-notification-container {
-  position:absolute;
-  z-index:10000;
+    position: absolute;
+    z-index: 10000;
 }
 
 /* ---------------- Positions ---------------- */
 
 .dc-notification-container.bottom {
-  bottom: 20px;
+    bottom: 20px;
 }
 
 .dc-notification-container.right {
-  right: 20px;
+    right: 20px;
 }
 
 .dc-notification-container.left {
-  left: 20px;
+    left: 20px;
 }
 
 .dc-notification-container.top {
-  top: 20px;
+    top: 20px;
 }
 
 .dc-notification-container.center {
-  left: 50%;
-  margin-left:-190px;
+    left: 50%;
+    margin-left: -190px;
 }
 
 /* ---------------- Layout ---------------- */
 
 .dc-notification-wrapper {
     width: $width;
-    position:relative;
+    position: relative;
     margin: 10px 0;
 }
 
 .dc-notification {
     width: $width;
     background-color: $bg-color;
-    clear:both;
+    clear: both;
     min-height: $height;
     max-height: 90px;
     color: $text-color;
     border-top: 3px solid $border-color;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .dc-notification-success {
     width: $width;
     background-color: $bg-color;
-    clear:both;
+    clear: both;
     min-height: $height;
     max-height: 90px;
     color: $text-color;
     border-top: 3px solid $success-color;
-    overflow:hidden;
+    overflow: hidden;
 }
 .dc-notification-warning {
     width: $width;
     background-color: $bg-color;
-    clear:both;
+    clear: both;
     min-height: $height;
     max-height: 90px;
     color: $text-color;
     border-top: 3px solid $warning-color;
-    overflow:hidden;
+    overflow: hidden;
 }
 .dc-notification-error {
     width: $width;
     background-color: $bg-color;
-    clear:both;
+    clear: both;
     min-height: $height;
     max-height: 90px;
     color: $text-color;
     border-top: 3px solid $error-color;
-    overflow:hidden;
+    overflow: hidden;
 }
 .dc-notification-info {
     width: $width;
     background-color: $bg-color;
-    clear:both;
+    clear: both;
     min-height: $height;
     max-height: 90px;
     color: $text-color;
     border-top: 3px solid $info-color;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .dc-notification-close-btn {
@@ -108,70 +108,70 @@
     @include transition(all, 0.35s, ease-in-out);
     cursor: pointer;
     &:hover {
-      color: lighten($logo-color, 10%);
-      border: 1px solid lighten($bg-color, 5%);
+        color: lighten($logo-color, 10%);
+        border: 1px solid lighten($bg-color, 5%);
     }
 }
 
 .dc-notification-image {
     width: $height;
     height: $height;
-    float:left;
-    display:block;
+    float: left;
+    display: block;
     font-size: 40px;
     color: $title-color;
-    text-align:center;
+    text-align: center;
     i {
-      display: block;
-      width: 100%;
-      padding-top: 20px;
+        display: block;
+        width: 100%;
+        padding-top: 20px;
     }
     img {
-      margin:15px;
-      // width: 100%;
-      max-width:70px;
-      min-width:48px;
+        margin: 15px;
+        // width: 100%;
+        max-width: 70px;
+        min-width: 48px;
     }
 }
 
 /* ---------------- Type Specifics ---------------- */
 
 .dc-notification-image.dc-notification-type-info {
-  color: $info-color;
+    color: $info-color;
 }
 
 .dc-notification-image.dc-notification-type-warning {
-  color: $warning-color;
+    color: $warning-color;
 }
 
 .dc-notification-image.dc-notification-type-error {
-  color: $error-color;
+    color: $error-color;
 }
 
 .dc-notification-image.dc-notification-type-success {
-  color: $success-color;
+    color: $success-color;
 }
 
 /* ---------------- Formats ---------------- */
 
 .dc-notification-content {
-    padding-left: 100px;
-    padding-right:15px;
-    padding-top:10px;
+    padding-left: 80px;
+    padding-right: 15px;
+    padding-top: 10px;
 }
 
 .dc-notification-title {
     font-family: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', Arial;
     color: $title-color;
     margin: 0px;
-    padding:0px;
-    font-size:20px;
+    padding: 0px;
+    font-size: 20px;
 }
 
 p.dc-notification-text {
     font-family: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', Arial;
     margin-top: 0;
-    font-size:12px;
+    font-size: 12px;
 }
 
 /* ---------------- Animations ---------------- */
@@ -179,34 +179,34 @@ p.dc-notification-text {
 .ng-enter,
 .ng-leave,
 .ng-move {
-  -webkit-transition: .35s ease-in-out;
-  -moz-transition: .35s ease-in-out;
-  -o-transition: .35s ease-in-out;
-  transition: .35s ease-in-out;
-  position: relative;
+    -webkit-transition: .35s ease-in-out;
+    -moz-transition: .35s ease-in-out;
+    -o-transition: .35s ease-in-out;
+    transition: .35s ease-in-out;
+    position: relative;
 }
 
 .ng-enter {
-  left: -10px;
-  opacity: 0;
+    left: -10px;
+    opacity: 0;
 }
 .ng-enter.ng-enter-active {
-  left: 0;
-  opacity: 1;
+    left: 0;
+    opacity: 1;
 }
 
 .ng-leave {
-  left: 0;
-  opacity: 1;
+    left: 0;
+    opacity: 1;
 }
 .ng-leave.ng-leave-active {
-  left: -10px;
-  opacity: 0;
+    left: 10px;
+    opacity: 0;
 }
 
 .ng-move {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 .ng-move.ng-move-active {
-  opacity: 1;
+    opacity: 1;
 }
