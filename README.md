@@ -3,6 +3,8 @@ Notifications (AngularJS Service)
 
 AngularJS Notification Service.
 
+[Live Plnkr Demo](http://plnkr.co/edit/6N599Kz21gxyTkbwxdMl?p=preview)
+
 Dependancies
 ====
 
