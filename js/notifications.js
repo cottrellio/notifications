@@ -23,8 +23,7 @@ angular.module('notifications', []).
             error: { icon: 'exclamation-sign', duration: 5000, enabled: true },
             success: { icon: 'check-sign', duration: 5000, enabled: true },
             custom: { icon: 'trophy', duration: 35000, enabled: true },
-            localStorage: true,
-            defaultIco: 'icon.png'
+            localStorage: false,
         };
 
         return {
@@ -61,7 +60,7 @@ angular.module('notifications', []).
             },
 
             setTimer: function(notification) {
-                var timer = $timeout(function removeFromQueueTimeout() {
+                var timer = (notification.duration == 0) ? null : $timeout(function removeFromQueueTimeout() {
                     queue.splice(queue.indexOf(notification), 1);
                 }, notification.duration);
 
@@ -163,7 +162,7 @@ angular.module('notifications', []).
                 $scope.queue = $notification.getQueue();
 
                 $scope.pauseTimer = function(noti) {
-                    if (noti.timeout) {
+                    if (noti.timeout && noti.timeout !== null) {
                         $timeout.cancel(noti.timeout);
                         delete noti.timeout;
                         console.log('Timer paused!');
@@ -171,11 +170,11 @@ angular.module('notifications', []).
                 }
 
                 $scope.resumeTimer = function(noti) {
-                    if (!noti.timeout) {
+                    if (!noti.timeout && noti.timeout !== null) {
                         noti.timeout = $notification.setTimer(noti);
                         noti.timeout;
                         // console.log(noti);
-                        console.log('Resumed Timeout!');
+                        console.log('Resumed Timer!');
                     }
                 }
 
