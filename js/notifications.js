@@ -90,7 +90,8 @@ angular.module('notifications', []).
                 queue.push(notification);
 
                 // Timeout and remove from queue.
-                notification.timeout;
+                if (notification.timeout && notification.timeout !== null)
+                    notification.timeout;
 
                 // Save to local storage.
                 this.save();
