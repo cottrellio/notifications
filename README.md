@@ -1,4 +1,4 @@
-notifications
+Notifications (AngularJS Service)
 =============
 
 AngularJS Notification Service.
