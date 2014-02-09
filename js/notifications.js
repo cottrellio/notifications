@@ -124,7 +124,7 @@ angular.module('notifications', []).
         };
 
     }]).
-    directive('notifications', ['$notification', '$compile', function($notification, $compile) {
+    directive('dcNotifications', ['$notification', '$compile', function($notification, $compile) {
 
         console.log('Notifications directive instantiated.');
 
@@ -146,7 +146,7 @@ angular.module('notifications', []).
             '</div>';
 
         function link(scope, element, attrs){
-            var position = attrs.notifications;
+            var position = attrs.dcNotifications;
             position = position.split(' ');
             element.addClass('dc-notification-container');
             for(var i = 0; i < position.length ; i++){
