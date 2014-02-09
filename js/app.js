@@ -13,7 +13,7 @@ function MainCtrl($scope, $timeout, $notification) {
 		var message = {
 			type: 'success',
 			title: 'It Works!',
-			content: 'The Notification Service is successfully <strong>online</strong> :)'
+			content: 'The Notification Service is <strong>online</strong> :)'
 		};
 		$notification.notify(message);
 	}, 500);

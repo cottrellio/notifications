@@ -148,33 +148,33 @@ p.dc-notification-text {
   font-size: 12px; }
 
 /* ---------------- Animations ---------------- */
-.ng-enter,
-.ng-leave,
-.ng-move {
+.dc-notification-wrapper.ng-enter,
+.dc-notification-wrapper.ng-leave,
+.dc-notification-wrapper.ng-move {
   -webkit-transition: .35s ease-in-out;
   -moz-transition: .35s ease-in-out;
   -o-transition: .35s ease-in-out;
   transition: .35s ease-in-out;
   position: relative; }
 
-.ng-enter {
+.dc-notification-wrapper.ng-enter {
   left: -10px;
   opacity: 0; }
 
-.ng-enter.ng-enter-active {
+.dc-notification-wrapper.ng-enter.ng-enter-active {
   left: 0;
   opacity: 1; }
 
-.ng-leave {
+.dc-notification-wrapper.ng-leave {
   left: 0;
   opacity: 1; }
 
-.ng-leave.ng-leave-active {
+.dc-notification-wrapper.ng-leave.ng-leave-active {
   left: 10px;
   opacity: 0; }
 
-.ng-move {
+.dc-notification-wrapper.ng-move {
   opacity: 0.5; }
 
-.ng-move.ng-move-active {
+.dc-notification-wrapper.ng-move.ng-move-active {
   opacity: 1; }
