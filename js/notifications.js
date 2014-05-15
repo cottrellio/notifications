@@ -48,6 +48,11 @@ angular.module('notifications', []).
 
             notify: function(messageObj) {
 
+                // Validate required fields.
+                if (!this.validate(messageObj)) {
+                    return false;
+                }
+
                 var type = (messageObj.type && messageObj.type !== '') ? messageObj.type : '';
                 var image = (messageObj.image && messageObj.image !== '') ? messageObj.image : false;
                 var icon = (messageObj.icon && messageObj.icon !== '') ? messageObj.icon : settings[type].icon;
@@ -97,6 +102,29 @@ angular.module('notifications', []).
                 this.save();
 
                 return notification;
+            },
+
+            validate: function(messageObj) {
+
+                var requireds = [
+                    'type',
+                    'content'
+                ];
+
+                // Check if messageObj exists.
+                if (!messageObj) {
+                    return false;
+                }
+
+                // Check if reuireds exist, not undefined, not null.
+                for (var i = 0; i < requireds.length; i++) {
+                    if (!requireds[i] || requireds[i] == undefined || requireds[i] == null || requireds[i] == '') {
+                        return false;
+                    }
+                }
+
+                return true;
+
             },
 
             /* ------------------------------------------------------------------------------------------------
