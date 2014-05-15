@@ -105,7 +105,7 @@ angular.module('notifications', []).
             },
 
             validate: function(messageObj) {
-
+                // required fields.
                 var requireds = [
                     'type',
                     'content'
