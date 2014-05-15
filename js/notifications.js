@@ -24,6 +24,7 @@ angular.module('notifications', []).
             success: { icon: 'check-sign', duration: 5000, enabled: true },
             custom: { icon: 'trophy', duration: 35000, enabled: true },
             localStorage: false,
+            debugMode: false
         };
 
         return {
@@ -123,7 +124,11 @@ angular.module('notifications', []).
                 // Check if reuireds exist, not undefined, not null.
                 for (var i = 0; i < requireds.length; i++) {
                     if (!requireds[i] || requireds[i] == undefined || requireds[i] == null || requireds[i] == '') {
-                        console.log('Invalid message. Please check that `type` and `content` were provided.');
+                        // Alert
+                        if (settings.debugMode) {
+                            console.log('DEBUG - Invalid messageObj: Please check that `type` and `content` were provided.');
+                        }
+                        
                         return false;
                     }
                 }
