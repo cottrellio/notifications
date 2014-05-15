@@ -46,6 +46,7 @@ angular.module('notifications', []).
                 Notification Methods
             ------------------------------------------------------------------------------------------------ */
 
+            // Overwrite defaults if provided.
             notify: function(messageObj) {
 
                 // Validate required fields.
@@ -64,6 +65,7 @@ angular.module('notifications', []).
                 return this.makeNotification(type, image, icon, title, content, duration, userData);
             },
 
+            // Instantiate timer.
             setTimer: function(notification) {
                 var timer = (notification.duration == 0) ? null : $timeout(function removeFromQueueTimeout() {
                     queue.splice(queue.indexOf(notification), 1);
@@ -72,6 +74,7 @@ angular.module('notifications', []).
                 return timer;
             },
 
+            // Create notification, add to queue.
             makeNotification: function(type, image, icon, title, content, duration, userData) {
                 // Create notification.
                 var notification = {
@@ -104,6 +107,7 @@ angular.module('notifications', []).
                 return notification;
             },
 
+            // Validate messageObj for required fields and valid obj.
             validate: function(messageObj) {
                 // required fields.
                 var requireds = [
@@ -131,6 +135,7 @@ angular.module('notifications', []).
                 Storage Methods
             ------------------------------------------------------------------------------------------------ */
 
+            // Saves notifications to local storage.
             save: function() {
                 // Save all the notifications into localStorage
                 // console.log(JSON);
@@ -140,10 +145,12 @@ angular.module('notifications', []).
                 // console.log(localStorage.getItem('$notifications'));
             },
 
+            // Restores notifications from local storage.
             restore: function() {
                 // Load all notifications from localStorage
             },
 
+            // Clears notifications.
             clear: function(){
                 notifications = [];
                 this.save();
