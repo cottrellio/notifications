@@ -8,8 +8,10 @@
 angular.module('notifications', []).
     factory('$notification', ['$timeout', '$sce', function($timeout, $sce) {
 
-        console.log('Notification service online. :)');
-        console.log('$sce enabled: ' + $sce.isEnabled());
+        if ($notification.settings.debugMode) {
+            console.log('Notification service online. :)');
+            console.log('$sce enabled: ' + $sce.isEnabled());
+        }
         var notifications = JSON.parse(localStorage.getItem('$notifications')) || [],
             queue = [];
 
@@ -128,7 +130,7 @@ angular.module('notifications', []).
                         if (settings.debugMode) {
                             console.log('DEBUG - Invalid messageObj: Please check that `type` and `content` were provided.');
                         }
-                        
+
                         return false;
                     }
                 }
@@ -167,7 +169,9 @@ angular.module('notifications', []).
     }]).
     directive('dcNotifications', ['$notification', '$compile', function($notification, $compile) {
 
-        console.log('Notifications directive instantiated.');
+        if ($notification.settings.debugMode) {
+            console.log('Notifications directive instantiated.');
+        }
 
         var html =
             '<div class="dc-notification-wrapper" ng-repeat="notification in queue">' +
@@ -207,7 +211,10 @@ angular.module('notifications', []).
                     if (noti.timeout && noti.timeout !== null) {
                         $timeout.cancel(noti.timeout);
                         delete noti.timeout;
-                        console.log('Timer paused!');
+
+                        if ($notification.settings.debugMode) {
+                            console.log('Timer paused!');
+                        }
                     }
                 }
 
@@ -216,7 +223,10 @@ angular.module('notifications', []).
                         noti.timeout = $notification.setTimer(noti);
                         noti.timeout;
                         // console.log(noti);
-                        console.log('Resumed Timer!');
+
+                        if ($notification.settings.debugMode) {
+                            console.log('Resumed Timer!');
+                        }
                     }
                 }
 
