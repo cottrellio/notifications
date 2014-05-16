@@ -8,10 +8,6 @@
 angular.module('notifications', []).
     factory('$notification', ['$timeout', '$sce', function($timeout, $sce) {
 
-        if ($notification.settings.debugMode) {
-            console.log('Notification service online. :)');
-            console.log('$sce enabled: ' + $sce.isEnabled());
-        }
         var notifications = JSON.parse(localStorage.getItem('$notifications')) || [],
             queue = [];
 
@@ -28,6 +24,11 @@ angular.module('notifications', []).
             localStorage: false,
             debugMode: false
         };
+
+        if (settings.debugMode) {
+            console.log('Notification service online. :)');
+            console.log('$sce enabled: ' + $sce.isEnabled());
+        }
 
         return {
 
@@ -169,27 +170,6 @@ angular.module('notifications', []).
     }]).
     directive('dcNotifications', ['$notification', '$compile', function($notification, $compile) {
 
-        if ($notification.settings.debugMode) {
-            console.log('Notifications directive instantiated.');
-        }
-
-        var html =
-            '<div class="dc-notification-wrapper" ng-repeat="notification in queue">' +
-                '<div class="dc-notification-close-btn" ng-click="removeNotification(notification)">' +
-                    '<i class="icon-remove"></i>' +
-                '</div>' +
-                '<div class="dc-notification dc-notification-{{ notification.type }}" ng-mouseenter="pauseTimer(notification)" ng-mouseleave="resumeTimer(notification)">' +
-                    '<div class="dc-notification-image dc-notification-type-{{ notification.type }}" ng-switch on="notification.image">' +
-                        '<i class="icon-{{ notification.icon }}" ng-switch-when="false"></i>' +
-                        '<img ng-src="{{ notification.image }}" ng-switch-default />' +
-                    '</div>' +
-                    '<div class="dc-notification-content dc-notification-content-{{ notification.type }}">' +
-                        '<h3 class="dc-notification-title">{{ notification.title }}</h3>' +
-                        '<p class="dc-notification-text" ng-bind-html="notification.content"></p>' +
-                    '</div>' +
-                '</div>' +
-            '</div>';
-
         function link(scope, element, attrs){
             var position = attrs.dcNotifications;
             position = position.split(' ');
@@ -202,9 +182,15 @@ angular.module('notifications', []).
         return {
             restrict: 'A',
             scope: {},
-            template: html,
+            templateUrl: function(elem, attrs) {
+                return (attrs.templateUrl) ? attrs.templateUrl : 'tmpl/default.html';
+            },
             link: link,
             controller: ['$scope', '$timeout', function NotificationsCtrl($scope, $timeout) {
+                if ($notification.settings.debugMode) {
+                    console.log('Notifications directive instantiated.');
+                }
+
                 $scope.queue = $notification.getQueue();
 
                 $scope.pauseTimer = function(noti) {
@@ -216,7 +202,7 @@ angular.module('notifications', []).
                             console.log('Timer paused!');
                         }
                     }
-                }
+                };
 
                 $scope.resumeTimer = function(noti) {
                     if (!noti.timeout && noti.timeout !== null) {
@@ -228,10 +214,14 @@ angular.module('notifications', []).
                             console.log('Resumed Timer!');
                         }
                     }
-                }
+                };
 
                 $scope.removeNotification = function(noti) {
                     $scope.queue.splice($scope.queue.indexOf(noti), 1);
+
+                    if ($notification.settings.debugMode) {
+                        console.log('Notification removed.');
+                    }
                 };
             }
         ]};
